@@ -1,0 +1,206 @@
+html { 
+    margin: 0;
+    font: 10px "Times New Roman", sans-serif;
+  }
+  
+  body { 
+    margin: 0 0 0 0;
+  }
+  
+  h1, h2, h3, h4, h5, h6 { 
+    font-family: "Times New Roman", sans-serif;
+    margin: 2em 0 0.5em 0;
+    page-break-after: avoid;
+  } 
+  
+  h1 { 
+    padding: 2em 0 2em 0;
+    margin: 0;
+    font-size: 2.4em;
+    font-weight: 900;
+  }
+  
+  h2 { 
+    font-size: 1.2em;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  
+  h3 { 
+    font-size: 1em;
+    font-weight: bold;
+  }
+  
+  q::before {
+    content: "\201C";
+  }
+  
+  q::after {
+    content: "\201D";
+  }
+  
+  p { margin: 0 }
+  p + p { text-indent: 1.3em }
+  p.sidenote + p, p.caption, p.art { text-indent: 0 }
+  
+  p.author {
+    margin-top: 2em;
+    text-indent: 0;
+    text-align: right;
+  }
+  
+  pre {  margin: 1em 1.3em; }
+  
+  a { text-decoration: none; color: black }
+  
+  /* cross-references */  
+  a.pageref::after { content: " on page " target-counter(attr(href), page); }
+  a.chapref::before { content: " Chapter " target-counter(attr(href), printpage) ", "; }
+  a.figref { content: " Figure " target-counter(attr(href), figure); }
+  a.tableref { content: " Table " target-counter(attr(href), figure); }
+  
+   
+  /* figures and tables*/  
+  div.figure {
+    margin: 1em 0;
+    counter-increment: figure;
+  }
+  
+  div.figure .caption, div.table .caption {
+    float: left;
+    clear: left;
+    width: 37%;
+    text-align: right;
+    font-size: 0.9em;
+    margin: 0 0 1.2em -40%;
+  }
+  
+  div.figure .caption::before {
+    content: "Figure " counter(figure) ": ";
+    font-weight: bold;
+  }
+  
+  div.table .caption::before {
+    content: "Table " counter(table) ": ";
+    /*font-weight: bold;*/
+  }
+  
+  div.table {
+    margin: 1em 0;
+    counter-increment: table;
+  }
+  
+  div.table th {
+    text-align: center;
+  }
+  
+  table tr th, table td {
+	border: 1px solid black;
+    text-align: center;
+    padding-right: 1em;
+  }
+  
+  #markstable table th, table td{
+	text-align: center;
+    padding-right: 1em;
+  }
+   
+  table.lined td, table.lined th {
+    border-top: none;
+    border-bottom: thin dotted;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+  }
+  
+  /* Set page size and margin here */
+  @page {
+    /* margin: 27mm 16mm 27mm 16mm; */
+    /*      top, right, bottom, left */ 
+    margin: 10mm 1mm 10mm 1mm;  
+    size: 297mm 210mm;  
+  }
+  
+  
+  /* define default page and names pages: cover, blank, frontmatter */  
+  @page :left {
+    @top-left {
+      font: 11pt "Times New Roman", serif;
+      content: "Cascading Style Sheets";
+      vertical-align: bottom;
+      padding-bottom: 2em;
+    }
+  
+    @bottom-left {
+      font: 11pt "Times New Roman", serif;
+      content: counter(page);
+      padding-top: 2em;
+      vertical-align: top;
+    }
+  }
+  
+  @page :right {
+    @top-right {
+      font: 11pt "Times New Roman", serif;
+      content: string(header, first); 
+      vertical-align: bottom;
+      padding-bottom: 2em; 
+    }
+  
+    @bottom-right {
+      font: 11pt "Times New Roman", serif;
+      content: counter(page);
+      text-align: right;
+      vertical-align: top;
+      padding-top: 2em;
+    }
+  }
+ 
+  
+  @page blank :left {
+    @top-left { content: normal }
+    @bottom-left { content: normal }
+  }
+  
+  @page blank :right {
+    @top-right { content: normal }
+    @bottom-right { content: normal }
+  }
+  
+    
+  /* which section uses which named page */  
+  div.halftitlepage, div.titlepage, div.imprint, div.dedication { page: blank }
+  div.foreword, div.toc, div.preface { page: frontmatter }
+  
+  
+  /* page breaks */  
+  div.imprint { page-break-before: always }
+  div.printpage { 
+    page-break-before: always 
+  }
+    
+   
+  @media screen, handheld {
+    html { margin: 1em; font: 10px "Times New Roman", sans-serif; }
+    h1 { margin-bottom: 0.5em }
+    div.frontcover, div.halftitlepage, div.titlepage, div.imprint, 
+    div.dedication, div.foreword, div.toc, div.index { display: none }
+  }
+ #rcorners2 table {
+  border:none;
+  padding-top: 50px; 
+  padding-bottom: 8px; 
+  width: 270px;
+  height: 15px; 
+} 
+#rcorners2 td {
+  border:none;
+} 
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   text-align: center;
+}
+
+  
